@@ -17,7 +17,7 @@ export class UsersService {
     return this.userModel.findById(id).exec();
   }
   async findByEmail(email: string) {
-    return this.userModel.findOne({ email }).exec();
+    return this.userModel.findOne({ email: { $eq: email } }).exec();
   }
 
   async create(createUserDto: CreateUserDto) {
