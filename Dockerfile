@@ -1,18 +1,20 @@
 FROM node:20-alpine
 
-WORKDIR .
+WORKDIR /app
 
-# Install ALL deps (Nest CLI is in devDependencies)
-# Use --legacy-peer-deps to handle peer dependency conflicts
-RUN npm install --legacy-peer-deps
+# Copy only manifests first (better cache)
+COPY package*.json ./
 
-# Build NestJS app
+# Prefer ci if you have package-lock.json
+RUN npm ci --legacy-peer-deps
+
+# Copy the rest of the project
+COPY . .
+
 RUN npm run build
 
-# Remove dev dependencies to shrink image
-# Use --legacy-peer-deps to handle peer dependency conflicts
-RUN npm prune --production --legacy-peer-deps
+# Keep only prod deps
+RUN npm prune --omit=dev --legacy-peer-deps
 
 EXPOSE 4000
-
 CMD ["node", "dist/main.js"]
