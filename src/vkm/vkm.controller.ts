@@ -27,7 +27,6 @@ export class VkmController {
    * GET /vkm/filter?studyCredit=30&location=Den%20Bosch&level=NLQF6
    * Guard kun je aan/uit zetten; hieronder staat hij aan.
    */
-  @UseGuards(JwtAuthGuard)
   @Get('filter')
   filter(
     @Query('studyCredit') studyCredit?: string,
