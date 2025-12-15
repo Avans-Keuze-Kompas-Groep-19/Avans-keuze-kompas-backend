@@ -1,6 +1,6 @@
 FROM node:20-alpine
 
-WORKDIR /app
+WORKDIR .
 
 # Install ALL deps (Nest CLI is in devDependencies)
 # Use --legacy-peer-deps to handle peer dependency conflicts
