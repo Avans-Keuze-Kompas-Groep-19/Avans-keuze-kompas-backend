@@ -8,6 +8,8 @@ import { CreateQuestionsDto } from './dto/create-questions.dto';
 export class QuestionsService {
     constructor(@InjectModel(Question.name) private readonly questionModel: Model<Question>,) {}
     async findAll() {
+        console.log(this.questionModel.modelName);
+        console.log(this.questionModel.find().getFilter());
         const questions = await this.questionModel.find().exec();
         console.log(questions);
         return questions;
