@@ -7,7 +7,7 @@ import { QuestionsController } from './questions.controller';
 @Module({
     imports: [
         MongooseModule.forFeature([
-            { name: 'Question', schema: QuestionSchema, collection: 'Questions' },
+            { name: 'Question', schema: QuestionSchema, collection: 'questions' },
         ]),
     ],
     controllers: [QuestionsController],
