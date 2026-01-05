@@ -8,6 +8,7 @@ import { SyncModule } from './sync/sync.module';
 import { AuthModule } from './auth/auth.module';
 import configuration from './config/configuration';
 import { ConfigValidationService } from './config/config-validation.service';
+import { QuestionsModule } from './questions/questions.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { ConfigValidationService } from './config/config-validation.service';
     UsersModule,
     VkmModule,
     SyncModule,
+    QuestionsModule,
   ],
 })
 export class AppModule {}
