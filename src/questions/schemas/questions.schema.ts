@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Schema as MongooseSchema } from 'mongoose';
 
 @Schema({ _id: false })
 export class QuizAnswer {
@@ -11,11 +11,8 @@ export class QuizAnswer {
 }
 const QuizAnswerSchema = SchemaFactory.createForClass(QuizAnswer);
 
-@Schema({ _id: false })
+@Schema()
 export class Question extends Document {
-    @Prop({ type: Number, required: true })
-    _id: number;
-
   @Prop()
   question: string;
 
@@ -24,3 +21,7 @@ export class Question extends Document {
 }
 
 export const QuestionSchema = SchemaFactory.createForClass(Question);
+
+(QuestionSchema as MongooseSchema).add({
+    _id: Number,
+});
