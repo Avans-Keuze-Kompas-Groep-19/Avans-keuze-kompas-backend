@@ -29,7 +29,6 @@ export class QuestionsController {
     return this.service.findAll();
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get(':id')
   findOne(@Param('id', MongoIdPipe) id: string) {
     return this.service.findOne(id);
