@@ -11,8 +11,11 @@ export class QuizAnswer {
 }
 const QuizAnswerSchema = SchemaFactory.createForClass(QuizAnswer);
 
-@Schema()
+@Schema({ _id: false })
 export class Question extends Document {
+    @Prop({ type: Number, required: true })
+    _id: number;
+
   @Prop()
   question: string;
 
