@@ -28,6 +28,10 @@ export class VkmService {
     return this.model.findByIdAndDelete(id).exec();
   }
 
+  async findBatch(ids: string[]) {
+    return this.model.find({ id: { $in: ids } }).exec();
+  }
+
   /**
    * Filter op studyCredit, location, level via query params.
    * Voorbeeld: /vkm/filter?studyCredit=30&location=Den%20Bosch&level=NLQF6
