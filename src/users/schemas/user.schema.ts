@@ -18,6 +18,12 @@ export class User extends Document {
   @Prop({ default: false })
   is_student: boolean;
 
+  @Prop({
+    type: [String],
+    default: [],
+  })
+  recommended_vkms: string[];
+
   @Prop()
   group: string;
 

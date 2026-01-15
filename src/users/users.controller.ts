@@ -44,7 +44,7 @@ export class UsersController {
     return this.service.delete(id);
   }
 
-  @Post(':id/recommend')
+  @Put(':id/recommended-vkms')
   updateRecommendedVkms(
     @Param('id', MongoIdPipe) id: string,
     @Body() body: RecommendVkmsDto,
