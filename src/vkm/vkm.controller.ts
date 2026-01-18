@@ -13,7 +13,6 @@ import { VkmService } from './vkm.service';
 import { CreateVkmDto } from './dto/create-vkm.dto';
 import { MongoIdPipe } from '../common/pipes/mongo-id.pipe';
 import { JwtAuthGuard } from '../auth/jwt-auth.gaurd';
-import { BatchGetVkmDto } from './dto/batch-get-vkm.dto';
 
 @Controller('vkm')
 export class VkmController {
@@ -52,12 +51,6 @@ export class VkmController {
   @Get(':id')
   findOne(@Param('id', MongoIdPipe) id: string) {
     return this.service.findOne(id);
-  }
-
-  @UseGuards(JwtAuthGuard)
-  @Post('batch')
-  findBatch(@Body() dto: BatchGetVkmDto) {
-    return this.service.findBatch(dto.ids);
   }
 
   @UseGuards(JwtAuthGuard)
